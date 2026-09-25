@@ -14,16 +14,16 @@ export default class Cameras extends Phaser.Scene {
   static create(pixels, { pixelate = true } = {}) {
     if (prefersReducedMotion()) pixelate = false;
     const camera = pixels.cameras.main;
-    camera.setZoom(3);
+    camera.setZoom(2.5);
     const startscene = camera.filters.external.addBlocky({
       size: pixelate ? 50 : 0,
     });
     camera.filters.external.addBlocky({ size: 2 });
     camera.filters.internal.addTiltShift(1, 0, 0.2, 0.2, 0.9, 0.2);
     camera.filters.internal.addQuantize({
-      steps: [64, 64, 64, 64],
+      steps: [32, 32, 32, 32],
       mode: 0,
-      dither: false,
+      dither: true,
       gamma: [1, 1, 1, 1],
     });
 
