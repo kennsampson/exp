@@ -24,7 +24,7 @@ export default class Dialog {
   static people = {
     kenn: {
       name: "Kenn",
-      portrait: "/assets/portraits/kenn.png",
+      portrait: "assets/portraits/kenn.png",
       voice: 190,
       relation: "Web Manager at ZippyPaws",
       vouches: "Everyone else in this town",
@@ -111,7 +111,7 @@ export default class Dialog {
 
     ashley: {
       name: "Ashley",
-      portrait: "/assets/portraits/ashley.png",
+      portrait: "assets/portraits/ashley.png",
       voice: 330,
       relation: "His manager at ZippyPaws",
       vouches: "PLACEHOLDER TEXT",
@@ -166,7 +166,7 @@ export default class Dialog {
 
     leah: {
       name: "Leah",
-      portrait: "/assets/portraits/leah.png",
+      portrait: "assets/portraits/leah.png",
       voice: 300,
       relation: "Coworker at ZippyPaws",
       vouches: "Listening to customers",
@@ -202,7 +202,7 @@ export default class Dialog {
 
     eve: {
       name: "Eve",
-      portrait: "/assets/portraits/eve.png",
+      portrait: "assets/portraits/eve.png",
       voice: 260,
       relation: "Friend and Mentor",
       vouches: "Clean design & fun UI/UX",
@@ -245,7 +245,7 @@ export default class Dialog {
 
     mark: {
       name: "Mark",
-      portrait: "/assets/portraits/mark.png",
+      portrait: "assets/portraits/mark.png",
       voice: 150,
       relation: "High school art teacher",
       vouches: "Chasing your interests",
@@ -280,7 +280,7 @@ export default class Dialog {
 
     mimi: {
       name: "Mimi",
-      portrait: "/assets/portraits/mimi.png",
+      portrait: "assets/portraits/mimi.png",
       voice: 380,
       relation: "Gave him his first real break",
       vouches: "Figuring it out",
@@ -328,7 +328,7 @@ export default class Dialog {
 
     dale: {
       name: "Dale",
-      portrait: "/assets/portraits/dale.png",
+      portrait: "assets/portraits/dale.png",
       voice: 210,
       relation: "Friend",
       vouches: "Showing up",
@@ -369,7 +369,7 @@ export default class Dialog {
 
     sydney: {
       name: "Sydney",
-      portrait: "/assets/portraits/sydney.png",
+      portrait: "assets/portraits/sydney.png",
       voice: 350,
       relation: "Friendt",
       vouches: "Paying it forward",
