@@ -61,3 +61,4 @@ The dialog box, menus, Journal, and case studies are plain HTML and CSS layered 
 The artwork and music in EXP come from talented artists on **[itch.io](https://itch.io/)**. Thank you for making this possible.
 
 The stories in the game are real, told by (and about) real people. Thank you to everyone in town.
+❤️
