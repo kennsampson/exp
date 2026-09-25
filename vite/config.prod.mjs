@@ -17,7 +17,9 @@ const phasermsg = () => {
 };
 
 export default defineConfig({
-  base: "/exp/",
+  // Relative, so the build works wherever it's served from: the custom
+  // domain (exp.y2kenn.com/) or a GitHub Pages project path (/exp/).
+  base: "./",
   logLevel: "warn",
   build: {
     rollupOptions: {
