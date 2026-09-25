@@ -34,10 +34,7 @@ export function isTopicUnlocked(topic, progress) {
   );
 }
 
-/**
- * Topics a villager will offer right now. Finale topics additionally wait
- * until enough stories have been found across the whole cast.
- */
+
 export function availableTopics(personKey, people, progress) {
   return (people[personKey]?.topics || []).filter(
     (topic) =>

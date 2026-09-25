@@ -92,7 +92,7 @@ export default class InteractionManager {
     g.fillRect(-0.5, -2.5, 1, 5);
     g.fillRect(-2.5, -0.5, 5, 1);
     g.fillStyle(0xfff3a0, 1).fillRect(-0.5, -0.5, 1, 1);
-    if (prefersReducedMotion()) return g; // a steady sparkle, no twinkle
+    if (prefersReducedMotion()) return g;
     this.scene.tweens.add({
       targets: g,
       alpha: { from: 1, to: 0.15 },
@@ -125,9 +125,7 @@ export default class InteractionManager {
   }
 
   /**
-   * Nearest target within its own radius of the player's centre. People
-   * win over objects and doors: villagers patrol past scenery, and walking
-   * up to someone should never prompt "Look" at the flower bed behind them.
+   * Nearest target within its own radius of the player's center.
    */
   findNearest() {
     const p = this.scene.player.getCenter();
@@ -151,11 +149,6 @@ export default class InteractionManager {
     this.prompt.setVisible(false);
   }
 
-  /**
-   * @param {number} time Scene time, for the marker bob.
-   * @param {boolean} canInteract false while a dialog or menu is up: markers
-   *   keep animating but no prompt shows and Space is left alone.
-   */
   update(time, canInteract = true) {
     this.current = canInteract ? this.findNearest() : null;
     this.refreshMarkers(time);

@@ -19,7 +19,7 @@ export default class Cameras extends Phaser.Scene {
       size: pixelate ? 50 : 0,
     });
     camera.filters.external.addBlocky({ size: 2 });
-    camera.filters.internal.addTiltShift(1, 0, 0.2, 0.2, 0.9, 0.2);
+    camera.filters.internal.addTiltShift(1, 1, 0.2, 0.2, 0.9, 0.2);
     camera.filters.internal.addQuantize({
       steps: [32, 32, 32, 32],
       mode: 0,
