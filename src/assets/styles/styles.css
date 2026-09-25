@@ -1,0 +1,1180 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: black;
+  color: white;
+  margin: 0;
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1rem;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  image-rendering: pixelated;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+#dialog-box {
+  display: none;
+  position: absolute;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  width: 55%;
+  padding: 50px;
+  max-width: 900px;
+  height: 200px;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 0, 0, 1) 0%,
+    rgba(5, 0, 145, 1) 50%
+  );
+  color: white;
+  font-family: "Press Start 2P", system-ui;
+  padding: 10px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  align-items: center;
+  gap: 20px;
+}
+
+#dialog-portrait {
+  order: 1;
+  width: auto;
+  height: 260px;
+  object-fit: contain;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  flex-shrink: 0;
+}
+
+#dialog-speaker {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  padding: 2px 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd400;
+}
+
+#dialog-text {
+  margin: 0;
+  position: absolute;
+  left: 40px;
+  height: fit-content;
+  max-width: 550px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+#game-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(20%);
+}
+
+#options-menu {
+  position: absolute;
+  width: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  min-height: 300px;
+  max-height: 85vh;
+  background: linear-gradient(
+    0deg,
+    rgba(3, 0, 0, 1) 0%,
+    rgba(5, 0, 145, 1) 50%
+  );
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  z-index: 1000;
+  overflow: hidden auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 48px;
+  box-sizing: border-box;
+}
+
+.menu-root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.menu-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 58px;
+  width: 100%;
+}
+
+ul.menu-column {
+  width: auto;
+  flex: 1;
+}
+
+ul.menu-footer {
+  width: 100%;
+}
+
+.menu-header {
+  color: #9fa8ff;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0 16px;
+  margin-bottom: -4px;
+}
+
+.menu-panel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: min(420px, 90%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.15s;
+}
+
+.menu-caret {
+  color: #ffd400;
+  visibility: hidden;
+  flex-shrink: 0;
+}
+
+.menu-item.is-selected {
+  background: rgba(255, 255, 255, 0.543);
+}
+
+.menu-item.is-selected .menu-caret {
+  visibility: visible;
+}
+
+.menu-label {
+  flex: 1;
+  text-transform: uppercase;
+}
+
+.menu-toggle-state {
+  color: #9fa8ff;
+  min-width: 3ch;
+  text-align: right;
+}
+
+#case-studies-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 10vw;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.case-studies-title {
+  color: #ffd400;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin: 0 0 36px;
+}
+
+.case-studies-list {
+  width: min(800px, 100%);
+}
+
+.case-studies-list .menu-item {
+  font-size: 1.1rem;
+  padding: 14px 20px;
+}
+
+.case-study-detail {
+  display: none;
+  flex-direction: column;
+  gap: 25px;
+  width: min(700px, 100%);
+  text-align: left;
+}
+
+.case-study-detail h3 {
+  margin: 0;
+  color: #ffd400;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+#case-study-detail-source {
+  margin: 0;
+  color: #9fa8ff;
+  font-size: 0.85rem;
+}
+
+.case-study-detail ul#case-study-detail-list {
+  margin: 0;
+  padding-left: 1.3em;
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 25px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+/* ---------- Shared ---------- */
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- Dialog: typewriter, choices ---------- */
+
+#dialog-box.no-portrait #dialog-text,
+#dialog-box.no-portrait #dialog-choices {
+  max-width: calc(100% - 80px);
+}
+
+#dialog-text {
+  top: 70px;
+  right: 240px;
+}
+
+#dialog-box.no-portrait #dialog-text {
+  right: 40px;
+}
+
+#dialog-next {
+  position: absolute;
+  right: 275px;
+  bottom: 16px;
+  color: #ffd400;
+  font-size: 0.9rem;
+  animation: dialog-next-bob 0.8s steps(2) infinite;
+}
+
+#dialog-box.no-portrait #dialog-next {
+  right: 24px;
+}
+
+@keyframes dialog-next-bob {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+#dialog-choices {
+  position: absolute;
+  top: 58px;
+  left: 28px;
+  right: 240px;
+  width: auto;
+  gap: 2px;
+}
+
+#dialog-choices .menu-item {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+#dialog-choices .menu-label {
+  text-transform: none;
+  line-height: 1.4;
+}
+
+#dialog-choices .menu-item.is-done .menu-label {
+  color: #b9bde8;
+}
+
+.choice-badge {
+  flex-shrink: 0;
+  font-size: 0.6rem;
+  color: #000;
+  background: #ffd400;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+/* ---------- Toasts ---------- */
+
+#toasts {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.toast {
+  opacity: 0;
+  padding: 12px 18px;
+  font-size: 1.5rem;
+  background: rgba(5, 0, 90, 0.92);
+  border: 2px solid white;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.toast-star::before {
+  content: "\2605  ";
+  color: #ffd400;
+}
+
+/* ---------- Journal ---------- */
+
+#journal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2000;
+  background: linear-gradient(0deg, #030000 0%, #05005a 100%);
+  flex-direction: column;
+  gap: 24px;
+  padding: 36px 8vw;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.journal-title {
+  margin: 0;
+  color: #ffd400;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.journal-meters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 32px;
+}
+
+.meter {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+}
+
+.meter-label {
+  color: #9fa8ff;
+  text-transform: uppercase;
+}
+
+.meter-bar {
+  height: 10px;
+  border: 2px solid white;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #ffd400;
+  transition: width 0.4s;
+}
+
+#journal-people-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.journal-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.journal-card img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  object-position: top;
+  image-rendering: pixelated;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.journal-card.is-unmet img {
+  filter: brightness(0);
+  opacity: 0.6;
+}
+
+.journal-card h3 {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: #ffd400;
+}
+
+.journal-card.is-unmet h3 {
+  color: #a4a8cc;
+}
+
+.journal-card p {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.journal-relation {
+  color: #9fa8ff;
+}
+
+.journal-stories {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  font-size: 0.7rem;
+  line-height: 1.8;
+  color: #a4a8cc;
+}
+
+.journal-stories li::before {
+  content: "\2606  ";
+}
+
+.journal-stories li.is-found {
+  color: white;
+}
+
+.journal-stories li.is-found::before {
+  content: "\2605  ";
+  color: #ffd400;
+}
+
+.journal-footer {
+  width: auto;
+}
+
+/* ---------- Credits ---------- */
+
+#credits-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2500;
+  background: #000;
+  overflow: hidden;
+  justify-content: center;
+  text-align: center;
+}
+
+#credits-roll {
+  position: absolute;
+  top: 0;
+  width: min(600px, 90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+#credits-roll h2,
+#credits-card h2 {
+  color: #ffd400;
+  font-size: 2rem;
+  margin: 0;
+}
+
+#credits-roll h3 {
+  color: #9fa8ff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 60px 0 10px;
+}
+
+.credits-sub,
+.credits-you,
+#credits-card p {
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+#credits-cast {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#credits-cast li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#credits-cast img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  object-position: top;
+  image-rendering: pixelated;
+}
+
+#credits-cast strong {
+  font-size: 1rem;
+}
+
+#credits-cast span {
+  font-size: 0.7rem;
+  color: #9fa8ff;
+}
+
+#credits-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+}
+
+#credits-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+#credits-links a,
+#credits-continue {
+  font: inherit;
+  font-size: 0.75rem;
+  color: white;
+  background: rgba(5, 0, 145, 0.8);
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 12px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#credits-links a:hover,
+#credits-continue:hover,
+#credits-links a:focus-visible,
+#credits-continue:focus-visible {
+  background: #ffd400;
+  color: #000;
+}
+
+/* ---------- Time of day / weather label ---------- */
+
+#atmosphere-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 900;
+  padding: 8px 12px;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 40, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+#atmosphere-badge:empty {
+  display: none;
+}
+
+/* ---------- Accessibility ---------- */
+
+/* Menu entries are real buttons and links; strip the browser styling. */
+button.menu-item,
+a.menu-item {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.menu-panel > li {
+  list-style: none;
+}
+
+.menu-item:focus {
+  outline: none;
+}
+
+.menu-item:focus-visible {
+  outline: 3px solid #ffd400;
+  outline-offset: 2px;
+}
+
+/* Focus follows the highlight, so the highlight already marks it. */
+.menu-item.is-selected:focus-visible {
+  outline: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Screen-reader notice: read first by assistive tech, and slides in as a
+   banner when a keyboard user tabs to its link. Always the plain font. */
+.a11y-notice {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  z-index: 5000;
+  width: min(640px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 18px 22px;
+  color: #0a0a24;
+  background: #ffd400;
+  border: 3px solid white;
+  border-radius: 10px;
+  font: 1rem/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  transform: translate(-50%, calc(-100% - 40px));
+}
+
+.a11y-notice:focus-within {
+  transform: translate(-50%, 0);
+}
+
+.a11y-notice h1 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.a11y-notice p {
+  margin: 0 0 10px;
+}
+
+.a11y-notice a {
+  color: #0a0a24;
+  font-weight: 700;
+}
+
+.a11y-notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.a11y-notice-continue {
+  font: inherit;
+  font-weight: 700;
+  color: #ffd400;
+  background: #0a0a24;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.a11y-notice a:focus-visible,
+.a11y-notice-continue:focus-visible {
+  outline: 3px solid #0a0a24;
+  outline-offset: 3px;
+}
+
+/* The game itself takes focus after the notice; show that when it arrives
+   by keyboard. */
+canvas:focus {
+  outline: none;
+}
+
+canvas:focus-visible {
+  outline: 3px solid #ffd400;
+  outline-offset: -3px;
+}
+
+.noscript {
+  padding: 24px;
+  line-height: 1.8;
+}
+
+.noscript a {
+  color: #ffd400;
+}
+
+/* Options > Font > PLAIN: a readable font for all of the HTML UI. The
+   in-world bubbles are canvas text and stay pixel. */
+body.readable-font,
+body.readable-font #dialog-box,
+body.readable-font button,
+body.readable-font .toast {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body.readable-font .menu-label {
+  text-transform: none;
+}
+
+body.readable-font #dialog-text {
+  line-height: 1.6;
+}
+
+#credits-overlay.is-static {
+  overflow-y: auto;
+  align-items: flex-start;
+}
+
+#credits-overlay.is-static #credits-roll {
+  position: relative;
+  margin: 40px auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #dialog-next {
+    animation: none;
+  }
+
+  .meter-fill,
+  .menu-item {
+    transition: none;
+  }
+}
+
+/* Smaller desktop windows: the portrait takes a fixed 240px, so give the
+   box more of the width or the text gets squeezed beside it. */
+@media (max-width: 1100px) {
+  #dialog-box {
+    width: 80%;
+  }
+}
+
+/* Narrow windows: a small portrait in the corner instead of the big one,
+   so the text gets the full width of the box. */
+@media (max-width: 900px) {
+  #dialog-portrait {
+    top: 8px;
+    right: 10px;
+    bottom: auto;
+    height: 64px;
+  }
+
+  #dialog-text,
+  #dialog-choices {
+    right: 16px;
+    max-width: none;
+  }
+
+  #dialog-text {
+    top: 84px;
+  }
+
+  #dialog-choices {
+    top: 78px;
+  }
+
+  #dialog-next {
+    right: 16px;
+  }
+}
+
+/* ---------- Touch controls (phones & tablets) ---------- */
+
+#touch-controls {
+  display: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  html,
+  body {
+    overscroll-behavior: none;
+  }
+
+  #app {
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  /* Above the full-screen panels (Journal, Case Studies, Credits) so B and
+     MENU are always there to back out; the panels leave room for them. */
+  #touch-controls {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2600;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px max(20px, env(safe-area-inset-right))
+      max(16px, env(safe-area-inset-bottom))
+      max(20px, env(safe-area-inset-left));
+    pointer-events: none;
+  }
+
+  #dpad,
+  .touch-buttons button {
+    pointer-events: auto;
+    touch-action: none;
+  }
+
+  #dpad {
+    position: relative;
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* The cross: two bars, drawn with pseudo-elements. */
+  #dpad::before,
+  #dpad::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(20, 20, 60, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+  }
+
+  #dpad::before {
+    width: 48px;
+    height: 132px;
+  }
+
+  #dpad::after {
+    width: 132px;
+    height: 48px;
+  }
+
+  .dpad-arrow {
+    position: absolute;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  .dpad-up { left: 50%; top: 18%; }
+  .dpad-down { left: 50%; top: 82%; }
+  .dpad-left { left: 18%; top: 50%; }
+  .dpad-right { left: 82%; top: 50%; }
+
+  #dpad[data-direction="up"] .dpad-up,
+  #dpad[data-direction="down"] .dpad-down,
+  #dpad[data-direction="left"] .dpad-left,
+  #dpad[data-direction="right"] .dpad-right {
+    color: #ffd400;
+  }
+
+  .touch-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      ".    a"
+      "b    ."
+      "menu menu";
+    gap: 6px 14px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .touch-buttons button {
+    font-family: inherit;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(20, 20, 60, 0.85);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .touch-a,
+  .touch-b {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+  }
+
+  .touch-buttons .touch-a {
+    grid-area: a;
+    background: rgba(160, 20, 40, 0.9);
+  }
+
+  .touch-b {
+    grid-area: b;
+  }
+
+  .touch-menu {
+    grid-area: menu;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.6rem;
+  }
+
+  #journal-overlay,
+  #case-studies-overlay,
+  #credits-overlay.is-static {
+    padding-bottom: 200px;
+  }
+
+  .touch-buttons button.is-pressed {
+    background: #ffd400;
+    color: #000;
+  }
+}
+
+/* ---------- Phone held upright: handheld layout ----------
+   Game on top at full width, dialog in the middle, controls at the bottom,
+   so nothing covers the town. */
+
+@media (hover: none) and (pointer: coarse) and (orientation: portrait) {
+  :root {
+    --game-h: calc(100vw * 672 / 832);
+    --controls-h: 190px;
+  }
+
+  #game-container {
+    height: var(--game-h);
+  }
+
+  #touch-controls {
+    height: var(--controls-h);
+    box-sizing: border-box;
+  }
+
+  #dialog-box {
+    position: fixed;
+    top: calc(var(--game-h) + 10px);
+    bottom: calc(var(--controls-h) + 6px);
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: none;
+    height: auto !important;
+    margin: 0;
+    padding: 0;
+    transform: none !important;
+    overflow-y: auto;
+    font-size: 0.85rem;
+  }
+
+  #dialog-speaker {
+    top: 12px;
+    left: 8px;
+    font-size: 1rem;
+  }
+
+  #dialog-portrait {
+    top: 6px;
+    right: 8px;
+    bottom: auto;
+    height: 56px;
+  }
+
+  #dialog-text,
+  #dialog-box.no-portrait #dialog-text {
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
+
+  #dialog-choices,
+  #dialog-box.no-portrait #dialog-choices {
+    top: 68px;
+    left: 6px;
+    right: 6px;
+    max-width: none;
+  }
+
+  #dialog-next,
+  #dialog-box.no-portrait #dialog-next {
+    right: 14px;
+    bottom: 10px;
+  }
+}
+
+/* ---------- Phone held sideways ---------- */
+
+@media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+  #touch-controls {
+    top: 0;
+    align-items: flex-end;
+  }
+
+  #dpad {
+    width: 128px;
+    height: 128px;
+    opacity: 0.85;
+  }
+
+  #dialog-box {
+    width: calc(100vw - 380px);
+    min-width: 280px;
+    bottom: 12px;
+    height: 150px;
+    font-size: 0.8rem;
+    /* Sit on the bottom edge (skip the desktop slide-up) so more of the
+       town stays visible above it. */
+    transform: translateX(-50%) !important;
+  }
+
+  #dialog-portrait {
+    display: none !important;
+  }
+
+  #dialog-text,
+  #dialog-choices,
+  #dialog-box.no-portrait #dialog-text {
+    top: 48px;
+    left: 16px;
+    right: 16px;
+    max-width: none;
+  }
+
+  #dialog-speaker {
+    top: 10px;
+    font-size: 1rem;
+  }
+
+  #dialog-next {
+    right: 14px;
+  }
+}
+
+/* ---------- Narrow screens: menus and overlays ---------- */
+
+@media (max-width: 700px) {
+  #options-menu {
+    width: calc(100vw - 24px);
+    padding: 16px 12px;
+    min-height: 0;
+  }
+
+  .menu-columns {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .menu-panel {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .menu-item {
+    font-size: 0.75rem;
+    padding: 10px 12px;
+  }
+
+  .menu-header {
+    font-size: 0.7rem;
+  }
+
+  #case-studies-overlay,
+  #journal-overlay {
+    padding: 24px 16px;
+    justify-content: flex-start;
+  }
+
+  .case-studies-title,
+  .journal-title {
+    font-size: 1.1rem;
+  }
+
+  .case-studies-list .menu-item {
+    font-size: 0.8rem;
+  }
+
+  .case-study-detail h3 {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .case-study-detail ul#case-study-detail-list {
+    font-size: 0.75rem;
+  }
+
+  #journal-people-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-card img {
+    width: 64px;
+    height: 64px;
+  }
+
+  #toasts {
+    top: 12px;
+    width: calc(100vw - 24px);
+  }
+
+  .toast {
+    white-space: normal;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  #credits-roll h2,
+  #credits-card h2 {
+    font-size: 1.3rem;
+  }
+}

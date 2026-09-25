@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+25&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="EXP: Kenn Sampson's portfolio as a pixel-art town. Walk around and hear stories from the friends, teachers, and coworkers who shaped his web career."
+    />
+    <meta property="og:title" content="EXP - Y2Kenn" />
+    <meta
+      property="og:description"
+      content="Kenn Sampson's portfolio as a pixel-art town, told by the people who know him best."
+    />
+    <meta property="og:type" content="website" />
+    <title>EXP - Y2Kenn</title>
+    <link rel="stylesheet" href="/src/assets/styles/styles.css" />
+  </head>
+
+  <body>
+    <!-- First thing a screen reader reads; slides into view when a keyboard
+         user presses Tab. -->
+    <section class="a11y-notice" aria-labelledby="a11y-notice-title">
+      <h1 id="a11y-notice-title">Using a screen reader?</h1>
+      <p>
+        EXP is built with a game engine, which draws everything onto a
+        canvas: a single picture with no text, headings, or buttons that a
+        screen reader can read. There's no way for assistive technology to
+        describe the town, its people, or their stories.
+      </p>
+      <p>
+        My regular portfolio covers the same background as a standard
+        website. You can still play with a keyboard here: arrow keys or WASD
+        to move, Space to talk, Enter for the menu.
+      </p>
+      <div class="a11y-notice-actions">
+        <a href="https://y2kenn.com">Go to my portfolio at y2kenn.com</a>
+        <button type="button" class="a11y-notice-continue">
+          Continue to the game
+        </button>
+      </div>
+    </section>
+    <noscript>
+      <p class="noscript">
+        EXP is a game and needs JavaScript to run.
+        <a href="https://y2kenn.com">Visit my regular portfolio at y2kenn.com.</a>
+      </p>
+    </noscript>
+    <div id="app">
+      <div id="options-menu" style="display: none">
+        <div id="options-main" class="menu-root">
+          <div class="menu-columns">
+            <ul class="menu-panel menu-column">
+              <li><button type="button" class="menu-item" data-action="journal">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Journal</span>
+              </button></li>
+              <li><button type="button" class="menu-item" data-action="case-studies">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Case Studies</span>
+              </button></li>
+              <li hidden><button type="button" class="menu-item" data-action="credits">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Credits</span>
+              </button></li>
+              <li><button type="button" class="menu-item" data-action="options">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Options</span>
+              </button></li>
+            </ul>
+            <ul id="menu-links" class="menu-panel menu-column">
+              <li class="menu-header">External Links</li>
+              <li><a class="menu-item" data-link="resume" target="_blank" rel="noopener noreferrer">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Resume</span>
+              </a></li>
+              <li><a class="menu-item" data-link="github" target="_blank" rel="noopener noreferrer">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">GitHub</span>
+              </a></li>
+              <li><a class="menu-item" data-link="linkedin" target="_blank" rel="noopener noreferrer">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">LinkedIn</span>
+              </a></li>
+              <li><a class="menu-item" data-link="email" target="_blank" rel="noopener noreferrer">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Email</span>
+              </a></li>
+              <li><a class="menu-item" data-link="portfolio" target="_blank" rel="noopener noreferrer">
+                <span class="menu-caret">&#9654;</span>
+                <span class="menu-label">Y2Kenn.com</span>
+              </a></li>
+            </ul>
+          </div>
+          <ul class="menu-panel menu-footer">
+            <li><button type="button" class="menu-item" data-action="close">
+              <span class="menu-caret">&#9654;</span>
+              <span class="menu-label">Close</span>
+            </button></li>
+          </ul>
+        </div>
+
+        <ul id="options-sub" class="menu-panel" style="display: none">
+          <li><button type="button" class="menu-item" data-toggle="music">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Music</span>
+            <span class="menu-toggle-state" data-state="music">ON</span>
+          </button></li>
+          <li><button type="button" class="menu-item" data-toggle="sfx">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">SFX</span>
+            <span class="menu-toggle-state" data-state="sfx">ON</span>
+          </button></li>
+          <li><button type="button" class="menu-item" data-toggle="font">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Font</span>
+            <span class="menu-toggle-state">PIXEL</span>
+          </button></li>
+          <!-- PAUSED(atmosphere)
+          <li><button type="button" class="menu-item" data-toggle="time">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Time</span>
+            <span class="menu-toggle-state">AUTO</span>
+          </button></li>
+          <li><button type="button" class="menu-item" data-toggle="weather">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Weather</span>
+            <span class="menu-toggle-state">AUTO</span>
+          </button></li>
+          -->
+          <li><button type="button" class="menu-item" data-action="back">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Back</span>
+          </button></li>
+        </ul>
+      </div>
+
+      <div id="case-studies-overlay" style="display: none">
+        <h2 class="case-studies-title">Case Studies</h2>
+
+        <ul id="case-studies-list" class="menu-panel case-studies-list">
+          <!-- entries + a trailing Back item are injected by OptionsManager -->
+        </ul>
+
+        <div
+          id="case-study-detail"
+          class="case-study-detail"
+          style="display: none"
+        >
+          <h3 id="case-study-detail-title"></h3>
+          <p id="case-study-detail-source"></p>
+          <ul id="case-study-detail-list"></ul>
+          <ul class="menu-panel">
+            <li><button type="button" class="menu-item" data-action="back">
+              <span class="menu-caret">&#9654;</span>
+              <span class="menu-label">Back</span>
+            </button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="journal-overlay" style="display: none">
+        <h2 class="journal-title">Journal</h2>
+        <div class="journal-meters">
+          <div id="journal-stories" class="meter">
+            <span class="meter-label">Stories</span>
+            <span class="meter-bar"><span class="meter-fill"></span></span>
+            <span class="meter-count"></span>
+          </div>
+          <div id="journal-people" class="meter">
+            <span class="meter-label">People</span>
+            <span class="meter-bar"><span class="meter-fill"></span></span>
+            <span class="meter-count"></span>
+          </div>
+          <div id="journal-places" class="meter">
+            <span class="meter-label">Discoveries</span>
+            <span class="meter-bar"><span class="meter-fill"></span></span>
+            <span class="meter-count"></span>
+          </div>
+        </div>
+        <ul id="journal-people-grid"></ul>
+        <ul class="menu-panel journal-footer">
+          <li><button type="button" class="menu-item" data-action="back">
+            <span class="menu-caret">&#9654;</span>
+            <span class="menu-label">Back</span>
+          </button></li>
+        </ul>
+      </div>
+
+      <div id="credits-overlay" style="display: none">
+        <div id="credits-roll">
+          <h2>EXP</h2>
+          <p class="credits-sub">A town built by the people who built me</p>
+          <h3>Starring</h3>
+          <ul id="credits-cast"></ul>
+          <h3>And</h3>
+          <p class="credits-you">You, for stopping by and listening</p>
+        </div>
+        <div id="credits-card" style="display: none">
+          <h2>Thanks for playing</h2>
+          <p>Want to talk to the real Kenn?</p>
+          <div id="credits-links"></div>
+          <button id="credits-continue" type="button">Keep exploring</button>
+          <div id="credits-extra">
+            <p>Special thanks to talented artists on itch.io for supplying the artwork and music used in this project.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="toasts" aria-live="polite"></div>
+      <!-- PAUSED(atmosphere) <div id="atmosphere-badge"></div> -->
+
+      <div id="game-container"></div>
+      <div id="dialog-box" role="region" aria-label="Conversation">
+        <span id="dialog-speaker"></span>
+        <p id="dialog-text"></p>
+        <ul
+          id="dialog-choices"
+          class="menu-panel"
+          aria-label="What do you want to say?"
+          style="display: none"
+        ></ul>
+        <span id="dialog-next" style="display: none">&#9660;</span>
+        <img id="dialog-portrait" src="" alt="" />
+      </div>
+
+      <!-- Screen readers hear each dialog line here as it appears. -->
+      <div id="sr-announcer" class="visually-hidden" aria-live="polite"></div>
+
+      <!-- Phones and tablets only (see styles.css). Hidden from screen
+           readers, which get the notice at the top of the page instead. -->
+      <div id="touch-controls" aria-hidden="true">
+        <div id="dpad">
+          <span class="dpad-arrow dpad-up">&#9650;</span>
+          <span class="dpad-arrow dpad-left">&#9664;</span>
+          <span class="dpad-arrow dpad-right">&#9654;</span>
+          <span class="dpad-arrow dpad-down">&#9660;</span>
+        </div>
+        <div class="touch-buttons">
+          <button type="button" tabindex="-1" class="touch-b" data-key="ESC">B</button>
+          <button type="button" tabindex="-1" class="touch-a" data-key="SPACE">A</button>
+          <button type="button" tabindex="-1" class="touch-menu" data-key="MENU">MENU</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
